@@ -1,5 +1,5 @@
-import './App.css';
-import Puzzle from './components/Puzzle';
+import "./App.css";
+import Puzzle from "./components/Puzzle";
 
 function App() {
   return (

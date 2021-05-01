@@ -1,9 +1,7 @@
-import './index.css';
+import "./index.css";
 
 function Pixel() {
-  return (
-      <div className="pixel"></div>
-  );
+  return <div className="pixel"></div>;
 }
 
 export default Pixel;

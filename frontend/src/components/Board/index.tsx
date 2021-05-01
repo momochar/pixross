@@ -1,11 +1,11 @@
-import Pixel from '../Pixel';
+import Pixel from "../Pixel";
 
 function Board() {
-    return (
-        <div>
-            <Pixel></Pixel>
-        </div>
-    );
+  return (
+    <div>
+      <Pixel></Pixel>
+    </div>
+  );
 }
 
 export default Board;
