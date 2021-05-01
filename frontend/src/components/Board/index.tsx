@@ -1,6 +1,10 @@
+import Pixel from '../Pixel';
+
 function Board() {
     return (
-        <div>Board</div>
+        <div>
+            <Pixel></Pixel>
+        </div>
     );
 }
 
