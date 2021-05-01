@@ -2,22 +2,21 @@ import Board from "../Board";
 import Guide from "../Guide";
 import { SimpleGrid } from "@chakra-ui/react"
 
-function Puzzle() {
+function Puzzle(props: {size: number}) {
+  const verticalGuides = [...Array(props.size)].map((_, i) => <Guide key={`v_${i}`}></Guide>)
+  const horizontalGuides = [...Array(props.size)].map((_, i) => <Guide key={`h_${i}`}></Guide>)
+
   return (
     <div>
       <SimpleGrid columns={2}>
         <SimpleGrid columns={1}></SimpleGrid>
-        <SimpleGrid columns={3}>
-          <Guide></Guide>
-          <Guide></Guide>
-          <Guide></Guide>
+        <SimpleGrid columns={props.size}>
+          {verticalGuides}
         </SimpleGrid>
         <SimpleGrid columns={1}>
-          <Guide></Guide>
-          <Guide></Guide>
-          <Guide></Guide>
+          {horizontalGuides}
         </SimpleGrid>
-        <Board column={3}></Board>
+        <Board size={props.size}></Board>
       </SimpleGrid>
     </div>
   );
