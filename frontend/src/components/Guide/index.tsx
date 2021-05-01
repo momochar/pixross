@@ -1,7 +1,5 @@
 function Guide() {
-    return (
-        <div>1</div>
-    );
+  return <div>1</div>;
 }
 
 export default Guide;

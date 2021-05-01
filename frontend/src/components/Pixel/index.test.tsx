@@ -1,6 +1,6 @@
-import { render } from '@testing-library/react';
-import Pixel from './';
+import { render } from "@testing-library/react";
+import Pixel from "./";
 
-test('renders Pixel', () => {
+test("renders Pixel", () => {
   render(<Pixel />);
 });

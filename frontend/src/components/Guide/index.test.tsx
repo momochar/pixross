@@ -1,6 +1,6 @@
-import { render } from '@testing-library/react';
-import Guide from './';
+import { render } from "@testing-library/react";
+import Guide from "./";
 
-test('renders Guide', () => {
+test("renders Guide", () => {
   render(<Guide />);
 });
