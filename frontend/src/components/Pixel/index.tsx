@@ -1,6 +1,8 @@
+import './index.css';
+
 function Pixel() {
   return (
-      <div>Pixel</div>
+      <div className="pixel"></div>
   );
 }
 
