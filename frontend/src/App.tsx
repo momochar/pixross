@@ -1,11 +1,10 @@
 import './App.css';
-import './components/Board'
-import Board from './components/Board';
+import Puzzle from './components/Puzzle';
 
 function App() {
   return (
     <div className="App">
-      <Board></Board>
+      <Puzzle></Puzzle>
     </div>
   );
 }
