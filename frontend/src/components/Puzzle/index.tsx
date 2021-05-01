@@ -3,21 +3,22 @@ import Guide from "../Guide";
 import { SimpleGrid } from "@chakra-ui/react"
 
 function Puzzle() {
+  const columns = 5;
+
+  const verticalGuides = [...Array(columns)].map((_, i) => <Guide key={`v_${i}`}></Guide>)
+  const horizontalGuides = [...Array(columns)].map((_, i) => <Guide key={`h_${i}`}></Guide>)
+
   return (
     <div>
       <SimpleGrid columns={2}>
         <SimpleGrid columns={1}></SimpleGrid>
-        <SimpleGrid columns={3}>
-          <Guide></Guide>
-          <Guide></Guide>
-          <Guide></Guide>
+        <SimpleGrid columns={columns}>
+          {verticalGuides}
         </SimpleGrid>
         <SimpleGrid columns={1}>
-          <Guide></Guide>
-          <Guide></Guide>
-          <Guide></Guide>
+          {horizontalGuides}
         </SimpleGrid>
-        <Board column={3}></Board>
+        <Board column={columns}></Board>
       </SimpleGrid>
     </div>
   );
