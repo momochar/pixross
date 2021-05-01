@@ -1,10 +1,12 @@
 import "./App.css";
 import Puzzle from "./components/Puzzle";
 
+
 function App() {
+  const puzzleSize = 5;
   return (
     <div className="App">
-      <Puzzle></Puzzle>
+      <Puzzle size={puzzleSize}></Puzzle>
     </div>
   );
 }
