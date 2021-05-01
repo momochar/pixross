@@ -16,7 +16,7 @@ function Puzzle(props: {size: number}) {
         <SimpleGrid columns={1}>
           {horizontalGuides}
         </SimpleGrid>
-        <Board column={props.size}></Board>
+        <Board size={props.size}></Board>
       </SimpleGrid>
     </div>
   );
