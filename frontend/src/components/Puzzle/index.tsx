@@ -1,16 +1,23 @@
 import Board from "../Board";
 import Guide from "../Guide";
 import { SimpleGrid } from "@chakra-ui/react"
-import { Box } from "@chakra-ui/react"
 
 function Puzzle() {
   return (
     <div>
       <SimpleGrid columns={2}>
-        <Box></Box>
-        <Box><Guide></Guide></Box>
-        <Box><Guide></Guide></Box>
-        <Box><Board></Board></Box>
+        <SimpleGrid columns={1}></SimpleGrid>
+        <SimpleGrid columns={3}>
+          <Guide></Guide>
+          <Guide></Guide>
+          <Guide></Guide>
+        </SimpleGrid>
+        <SimpleGrid columns={1}>
+          <Guide></Guide>
+          <Guide></Guide>
+          <Guide></Guide>
+        </SimpleGrid>
+        <Board column={3}></Board>
       </SimpleGrid>
     </div>
   );
