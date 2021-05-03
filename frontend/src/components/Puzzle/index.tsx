@@ -2,7 +2,12 @@ import Board from "../Board";
 import GuideGroup from "../GuideGroup";
 import { SimpleGrid } from "@chakra-ui/react";
 
-function Puzzle(props: { size: number }) {
+export function createGuide(puzzle: number[][]) {
+
+}
+
+
+function Puzzle(props: { size: number, puzzle: number[][] }) {
   const tmp = [1, 2, 1, 9];
   const verticalGuideGroup = [...Array(props.size)].map((_, i) => (
     <GuideGroup guides={tmp} key={`v_${i}`} index={i} direction="column"></GuideGroup>
