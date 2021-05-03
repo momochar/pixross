@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import Pixel from "./";
 
 test("renders Pixel", () => {
@@ -6,12 +6,43 @@ test("renders Pixel", () => {
 });
 
 describe("背景色について", () => {
-  test("defaultはwhite", () => {
+  beforeEach(() => {
     render(<Pixel />);
+  });
+  test("defaultはwhite", () => {
     expect(screen.getByTestId("pixel-element")).toHaveStyle({
       background: "white",
     });
   });
-  test("クリックされるとlightblueに変わる", () => {});
-  test("lightblueのboxがクリックされるとwhiteに戻る", () => {});
+  test("クリックされるとlightblueに変わる", () => {
+    fireEvent(
+      screen.getByTestId("pixel-element"),
+      new MouseEvent("click", {
+        bubbles: true,
+        cancelable: true,
+      })
+    );
+    expect(screen.getByTestId("pixel-element")).toHaveStyle({
+      background: "lightblue",
+    });
+  });
+  test("lightblueのboxがクリックされるとwhiteに戻る", () => {
+    fireEvent(
+      screen.getByTestId("pixel-element"),
+      new MouseEvent("click", {
+        bubbles: true,
+        cancelable: true,
+      })
+    );
+    fireEvent(
+      screen.getByTestId("pixel-element"),
+      new MouseEvent("click", {
+        bubbles: true,
+        cancelable: true,
+      })
+    );
+    expect(screen.getByTestId("pixel-element")).toHaveStyle({
+      background: "white",
+    });
+  });
 });
