@@ -1,5 +1,5 @@
-function Guide() {
-  return <div>1</div>;
+function Guide(props: { guide: number }) {
+  return <div>{props.guide}</div>;
 }
 
 export default Guide;
