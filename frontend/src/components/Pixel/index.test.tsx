@@ -8,10 +8,10 @@ test("renders Pixel", () => {
 describe("背景色について", () => {
   test("defaultはwhite", () => {
     render(<Pixel />);
-
-    screen.debug();
+    expect(screen.getByTestId("pixel-element")).toHaveStyle({
+      background: "white",
+    });
   });
   test("クリックされるとlightblueに変わる", () => {});
   test("lightblueのboxがクリックされるとwhiteに戻る", () => {});
-
-})
+});
