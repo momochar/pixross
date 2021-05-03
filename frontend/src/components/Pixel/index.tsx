@@ -1,4 +1,3 @@
-import "./index.css";
 import { Box } from "@chakra-ui/react";
 import { useState } from "react";
 
@@ -9,7 +8,7 @@ function Pixel() {
 
   const handleOnClick = () => {
     if (status === "blank") {
-      setStatus("painted")
+      setStatus("painted");
     } else {
       setStatus("blank");
     }
@@ -20,6 +19,7 @@ function Pixel() {
   return (
     <Box
       data-testid="pixel-element"
+      outline="solid 1px"
       bg={background}
       w="100%"
       p={0}
