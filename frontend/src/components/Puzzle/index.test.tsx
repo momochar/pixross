@@ -17,8 +17,9 @@ test("createGuide", () => {
     [1, 0, 1],
   ];
   const result = createGuide(puzzle);
-  const expected = [
-    []
-  ]
-  expect(result).toBe(expected);
+  const expected = {
+    column: [[1, 1], [1], [1, 1]],
+    row: [[1, 1], [1], [1, 1]]
+  }
+  expect(result).toStrictEqual(expected);
 });
