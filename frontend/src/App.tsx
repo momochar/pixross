@@ -3,7 +3,7 @@ import Puzzle from "./components/Puzzle";
 
 
 function App() {
-  const puzzleSize = 5;
+  const puzzleSize = 3;
   return (
     <div className="App">
       <Puzzle size={puzzleSize}></Puzzle>
