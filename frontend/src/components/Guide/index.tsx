@@ -1,5 +1,7 @@
+import { Box } from "@chakra-ui/react";
+
 function Guide(props: { guide: number }) {
-  return <div>{props.guide}</div>;
+  return <Box>{props.guide}</Box>;
 }
 
 export default Guide;
