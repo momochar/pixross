@@ -1,5 +1,7 @@
-function GuideGroup(props: { guide: number[] }) {
-  const guideElement = props.guide.map((g) => <div>{g}</div>);
+import Guide from "../Guide";
+
+function GuideGroup(props: { guides: number[] }) {
+  const guideElement = props.guides.map((g) => <Guide guide={g}></Guide>);
   return <div>{guideElement}</div>;
 }
 

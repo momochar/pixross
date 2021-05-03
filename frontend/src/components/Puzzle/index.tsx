@@ -5,10 +5,10 @@ import { SimpleGrid } from "@chakra-ui/react";
 function Puzzle(props: { size: number }) {
   const tmp = [1, 2, 1, 9];
   const verticalGuides = [...Array(props.size)].map((_, i) => (
-    <GuideGroup guide={tmp} key={`v_${i}`}></GuideGroup>
+    <GuideGroup guides={tmp} key={`v_${i}`}></GuideGroup>
   ));
   const horizontalGuides = [...Array(props.size)].map((_, i) => (
-    <GuideGroup guide={tmp} key={`h_${i}`}></GuideGroup>
+    <GuideGroup guides={tmp} key={`h_${i}`}></GuideGroup>
   ));
 
   return (
