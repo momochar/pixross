@@ -1,5 +1,6 @@
-function Guide() {
-  return <div>1</div>;
+function Guide(props: { guide: number[] }) {
+  const guideElement = props.guide.map((g) => <div>{g}</div>)
+  return <div>{guideElement}</div>;
 }
 
 export default Guide;

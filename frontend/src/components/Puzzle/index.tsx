@@ -3,8 +3,11 @@ import Guide from "../Guide";
 import { SimpleGrid } from "@chakra-ui/react"
 
 function Puzzle(props: {size: number}) {
-  const verticalGuides = [...Array(props.size)].map((_, i) => <Guide key={`v_${i}`}></Guide>)
-  const horizontalGuides = [...Array(props.size)].map((_, i) => <Guide key={`h_${i}`}></Guide>)
+  const tmp = [1, 2, 1, 9];
+  const verticalGuides = [...Array(props.size)].map((_, i) => <Guide guide={tmp} key={`v_${i}`}></Guide>)
+  const horizontalGuides = [...Array(props.size)].map((_, i) => (
+    <Guide guide={tmp} key={`h_${i}`}></Guide>
+  ));
 
   return (
     <div>
