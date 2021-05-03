@@ -1,7 +1,31 @@
 import "./index.css";
+import { Box } from "@chakra-ui/react";
+import { useState } from "react";
+
+// type PixelStatus = "blank" | "painted" | "blocked";
 
 function Pixel() {
-  return <div className="pixel"></div>;
+  const [status, setStatus] = useState("blank");
+
+  const handleOnClick = () => {
+    if (status === "blank") {
+      setStatus("painted")
+    } else {
+      setStatus("blank");
+    }
+  };
+
+  const background = status === "blank" ? "white" : "lightblue";
+
+  return (
+    <Box
+      data-testid="pixel-element"
+      bg={background}
+      w="100%"
+      p={0}
+      onClick={handleOnClick}
+    ></Box>
+  );
 }
 
 export default Pixel;
