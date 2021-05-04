@@ -1,14 +1,14 @@
 import { Stack, Button } from "@chakra-ui/react";
+import { PuzzleId } from "../../types";
 
 function PuzzleChoice(props: {
   choicedPuzzleId: number;
-  onChangeChoice: () => void;
+  onChangeChoice: (puzzleId: PuzzleId) => void;
 }) {
   const handleOnClick = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
-    console.log(event.target);
-    props.onChangeChoice();
+    props.onChangeChoice(Number(event.currentTarget.value));
   };
   return (
     <Stack justify="center" spacing={4} direction="row" align="center">
