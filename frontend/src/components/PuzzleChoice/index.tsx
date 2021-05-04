@@ -11,17 +11,24 @@ function PuzzleChoice(props: {
   ) => {
     props.onChangeChoice(Number(event.currentTarget.value));
   };
+
+  const buttons = props.puzzleIds.map((puzzleId) => {
+    return (
+      <Button
+        colorScheme="teal"
+        size="md"
+        value={puzzleId}
+        onClick={handleOnClick}
+        key={puzzleId}
+      >
+        Puzzle {puzzleId + 1}
+      </Button>
+    );
+  });
+
   return (
     <Stack justify="center" spacing={4} direction="row" align="center">
-      <Button colorScheme="teal" size="md" value="0" onClick={handleOnClick}>
-        Puzzle 1
-      </Button>
-      <Button colorScheme="teal" size="md" value="1" onClick={handleOnClick}>
-        Puzzle 2
-      </Button>
-      <Button colorScheme="teal" size="md" value="2" onClick={handleOnClick}>
-        Puzzle 3
-      </Button>
+      {buttons}
     </Stack>
   );
 }
