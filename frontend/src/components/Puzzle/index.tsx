@@ -1,6 +1,6 @@
 import Board from "../Board";
 import GuideGroup from "../GuideGroup";
-import { SimpleGrid } from "@chakra-ui/react";
+import { SimpleGrid, useToast } from "@chakra-ui/react";
 import { useState } from "react";
 import { PixelStatus } from "../../types";
 
@@ -48,6 +48,15 @@ export function updateStatuses(
   return nextStatuses;
 }
 
+export function isCorrect(statuses: PixelStatus[][], puzzle: number[][]) {
+  const convertedStatuses = statuses.map((row) =>
+    row.map((status) => (status === "painted" ? 1 : 0))
+  );
+  const jsonOfStatuses = JSON.stringify(convertedStatuses);
+  const jsonOfPuzzle = JSON.stringify(puzzle);
+  return jsonOfStatuses === jsonOfPuzzle;
+}
+
 function Puzzle(props: { size: number; puzzle: number[][] }) {
   const [statuses, setStatuses] = useState(
     props.puzzle.map((rows) => rows.map((_) => "blank")) as PixelStatus[][]
@@ -71,12 +80,29 @@ function Puzzle(props: { size: number; puzzle: number[][] }) {
     ></GuideGroup>
   ));
 
+  const toast = useToast();
+
   const onStatusChange = (
     rowIndex: number,
     columnIndex: number,
     nextStatus: PixelStatus
   ) => {
-    setStatuses(updateStatuses(rowIndex, columnIndex, nextStatus, statuses));
+    const updatedStatuses = updateStatuses(
+      rowIndex,
+      columnIndex,
+      nextStatus,
+      statuses
+    );
+    setStatuses(updatedStatuses);
+    if (isCorrect(updatedStatuses, props.puzzle)) {
+      toast({
+        title: "Clear!!!",
+        description: "Congratulations!!!!",
+        status: "success",
+        duration: 9000,
+        isClosable: true,
+      });
+    }
   };
 
   return (

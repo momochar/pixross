@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import Puzzle, { createGuide, updateStatuses } from "./";
+import Puzzle, { createGuide, updateStatuses, isCorrect } from "./";
 
 test("renders Puzzle", () => {
   const puzzle = [
@@ -56,5 +56,50 @@ describe("#updateStatuses", () => {
       ["blank", "blank", "painted"],
       ["blank", "blank", "blank"],
     ]);
+  });
+});
+
+describe("#isCorrect", () => {
+  describe("1×1の場合", () => {
+    test("正解のときはtrueを返す", () => {
+      const actual = isCorrect([["painted"]], [[1]]);
+      expect(actual).toBe(true);
+    });
+    test("不正解のときはfalseを返す", () => {
+      const actual = isCorrect([["blank"]], [[1]]);
+      expect(actual).toBe(false);
+    });
+  });
+  describe("3×3の場合", () => {
+    test("正解のときはtrueを返す", () => {
+      const actual = isCorrect(
+        [
+          ["painted", "blank", "blank"],
+          ["blank", "blank", "blank"],
+          ["blank", "blank", "blank"],
+        ],
+        [
+          [1, 0, 0],
+          [0, 0, 0],
+          [0, 0, 0],
+        ]
+      );
+      expect(actual).toBe(true);
+    });
+    test("不正解のときはfalseを返す", () => {
+      const actual = isCorrect(
+        [
+          ["painted", "blank", "blank"],
+          ["blank", "blank", "blank"],
+          ["blank", "blank", "blank"],
+        ],
+        [
+          [0, 0, 0],
+          [1, 0, 0],
+          [0, 0, 0],
+        ]
+      );
+      expect(actual).toBe(false);
+    });
   });
 });
