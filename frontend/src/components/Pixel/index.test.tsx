@@ -2,47 +2,21 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import Pixel from "./";
 
 test("renders Pixel", () => {
-  render(<Pixel status="blank" />);
+  render(<Pixel status="blank" onStatusChange={() => {}} />);
 });
 
 describe("背景色について", () => {
-  beforeEach(() => {
-    render(<Pixel status="blank" />);
-  });
   test("defaultはwhite", () => {
+    render(<Pixel status="blank" onStatusChange={() => {}} />);
     expect(screen.getByTestId("pixel-element")).toHaveStyle({
       background: "white",
     });
   });
-  test("クリックされるとlightblueに変わる", () => {
-    fireEvent(
-      screen.getByTestId("pixel-element"),
-      new MouseEvent("click", {
-        bubbles: true,
-        cancelable: true,
-      })
-    );
+  test("状態が painted なら lightblue", () => {
+    render(<Pixel status="painted" onStatusChange={() => {}} />);
     expect(screen.getByTestId("pixel-element")).toHaveStyle({
       background: "lightblue",
     });
   });
-  test("lightblueのboxがクリックされるとwhiteに戻る", () => {
-    fireEvent(
-      screen.getByTestId("pixel-element"),
-      new MouseEvent("click", {
-        bubbles: true,
-        cancelable: true,
-      })
-    );
-    fireEvent(
-      screen.getByTestId("pixel-element"),
-      new MouseEvent("click", {
-        bubbles: true,
-        cancelable: true,
-      })
-    );
-    expect(screen.getByTestId("pixel-element")).toHaveStyle({
-      background: "white",
-    });
-  });
+  // TODO: クリックされた時の振る舞いのテスト
 });
