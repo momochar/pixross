@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import Puzzle, { createGuide } from "./";
+import Puzzle, { createGuide, updateStatuses } from "./";
 
 test("renders Puzzle", () => {
   const puzzle = [
@@ -36,5 +36,25 @@ describe("#createGuide", () => {
       rows: [[3], [1], [3]],
     };
     expect(result).toStrictEqual(expected);
+  });
+});
+
+describe("#updateStatuses", () => {
+  test("1x1の更新", () => {
+    const updatedStatuses = updateStatuses(0, 0, "painted", [["blank"]]);
+    expect(updatedStatuses).toStrictEqual([["painted"]]);
+  });
+
+  test("3x3の更新", () => {
+    const updatedStatuses = updateStatuses(1, 2, "painted", [
+      ["blank", "blank", "blank"],
+      ["blank", "blank", "blank"],
+      ["blank", "blank", "blank"],
+    ]);
+    expect(updatedStatuses).toStrictEqual([
+      ["blank", "blank", "blank"],
+      ["blank", "blank", "painted"],
+      ["blank", "blank", "blank"],
+    ]);
   });
 });

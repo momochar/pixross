@@ -1,6 +1,8 @@
 import Board from "../Board";
 import GuideGroup from "../GuideGroup";
 import { SimpleGrid } from "@chakra-ui/react";
+import { useState } from "react";
+import { PixelStatus } from "../../types";
 
 export function createGuide(puzzle: number[][]) {
   const rows = extractGuideData(puzzle);
@@ -33,7 +35,24 @@ function extractGuideData(puzzle: number[][]) {
   });
 }
 
+export function updateStatuses(
+  rowIndex: number,
+  columnIndex: number,
+  nextStatus: PixelStatus,
+  currentStatuses: PixelStatus[][]
+) {
+  const nextStatuses = currentStatuses.map((row) =>
+    row.map((status) => status)
+  );
+  nextStatuses[rowIndex][columnIndex] = nextStatus;
+  return nextStatuses;
+}
+
 function Puzzle(props: { size: number; puzzle: number[][] }) {
+  const [statuses, setStatuses] = useState(
+    props.puzzle.map((rows) => rows.map((_) => "blank")) as PixelStatus[][]
+  );
+
   const { columns, rows } = createGuide(props.puzzle);
   const verticalGuideGroup = columns.map((column, index) => (
     <GuideGroup
@@ -52,13 +71,25 @@ function Puzzle(props: { size: number; puzzle: number[][] }) {
     ></GuideGroup>
   ));
 
+  const onStatusChange = (
+    rowIndex: number,
+    columnIndex: number,
+    nextStatus: PixelStatus
+  ) => {
+    setStatuses(updateStatuses(rowIndex, columnIndex, nextStatus, statuses));
+  };
+
   return (
     <div>
       <SimpleGrid columns={2}>
         <SimpleGrid columns={1}></SimpleGrid>
         <SimpleGrid columns={props.size}>{verticalGuideGroup}</SimpleGrid>
         <SimpleGrid columns={1}>{horizontalGuideGroup}</SimpleGrid>
-        <Board size={props.size}></Board>
+        <Board
+          size={props.size}
+          statuses={statuses}
+          onStatusChange={onStatusChange}
+        ></Board>
       </SimpleGrid>
     </div>
   );
