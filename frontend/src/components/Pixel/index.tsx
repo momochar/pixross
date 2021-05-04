@@ -13,7 +13,7 @@ function Pixel(props: { status: PixelStatus }) {
     }
   };
 
-  const background = status === "blank" ? "white" : "lightblue";
+  const background = props.status === "blank" ? "white" : "lightblue";
 
   return (
     <Box
