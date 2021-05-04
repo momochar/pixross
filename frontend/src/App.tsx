@@ -38,6 +38,7 @@ function App() {
     1: puzzle1,
     2: puzzle2,
   };
+  const puzzleIds: PuzzleId[] = Object.keys(puzzles).map((key) => Number(key));
   const choicedPuzzle = puzzles[choicedPuzzleId];
 
   const onChangeChoice = (puzzleId: PuzzleId) => {
@@ -47,6 +48,7 @@ function App() {
   return (
     <div className="App">
       <PuzzleChoice
+        puzzleIds={puzzleIds}
         choicedPuzzleId={choicedPuzzleId}
         onChangeChoice={onChangeChoice}
       ></PuzzleChoice>

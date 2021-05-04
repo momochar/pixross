@@ -2,7 +2,8 @@ import { Stack, Button } from "@chakra-ui/react";
 import { PuzzleId } from "../../types";
 
 function PuzzleChoice(props: {
-  choicedPuzzleId: number;
+  puzzleIds: PuzzleId[];
+  choicedPuzzleId: PuzzleId;
   onChangeChoice: (puzzleId: PuzzleId) => void;
 }) {
   const handleOnClick = (
