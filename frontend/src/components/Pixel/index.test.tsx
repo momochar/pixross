@@ -2,12 +2,12 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import Pixel from "./";
 
 test("renders Pixel", () => {
-  render(<Pixel />);
+  render(<Pixel status="blank" />);
 });
 
 describe("背景色について", () => {
   beforeEach(() => {
-    render(<Pixel />);
+    render(<Pixel status="blank" />);
   });
   test("defaultはwhite", () => {
     expect(screen.getByTestId("pixel-element")).toHaveStyle({

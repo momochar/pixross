@@ -2,7 +2,7 @@ import { Box } from "@chakra-ui/react";
 import { useState } from "react";
 import { PixelStatus } from "../../types";
 
-function Pixel() {
+function Pixel(props: { status: PixelStatus }) {
   const [status, setStatus] = useState("blank" as PixelStatus);
 
   const handleOnClick = () => {

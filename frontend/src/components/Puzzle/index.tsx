@@ -64,7 +64,7 @@ function Puzzle(props: { size: number; puzzle: number[][] }) {
         <SimpleGrid columns={1}></SimpleGrid>
         <SimpleGrid columns={props.size}>{verticalGuideGroup}</SimpleGrid>
         <SimpleGrid columns={1}>{horizontalGuideGroup}</SimpleGrid>
-        <Board size={props.size}></Board>
+        <Board size={props.size} statuses={statuses}></Board>
       </SimpleGrid>
     </div>
   );
