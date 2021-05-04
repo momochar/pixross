@@ -23,8 +23,27 @@ export function createGuide(puzzle: number[][]) {
       .filter((n: number) => n > 0);
   });
 
+  const transposedPuzzle = puzzle[0].map((_, c) => puzzle.map((r) => r[c]));
+  const columns = transposedPuzzle.map((line: number[]) => {
+    return line
+      .reduce((previous: number[], current: number) => {
+        if (current === 0) {
+          previous.push(0);
+        } else {
+          if (previous.length > 0) {
+            previous[previous.length - 1] = previous[previous.length - 1] + 1;
+          } else {
+            previous.push(1);
+          }
+        }
+        return previous;
+      }, [])
+      .filter((n: number) => n > 0);
+  });
+
+
   return {
-    column: [[1, 1], [1], [1, 1]],
+    column: columns,
     row: rows,
   };
 }
