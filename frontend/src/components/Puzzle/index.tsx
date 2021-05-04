@@ -1,6 +1,6 @@
 import Board from "../Board";
 import GuideGroup from "../GuideGroup";
-import { SimpleGrid } from "@chakra-ui/react";
+import { SimpleGrid, useToast } from "@chakra-ui/react";
 import { useState } from "react";
 import { PixelStatus } from "../../types";
 
@@ -80,13 +80,29 @@ function Puzzle(props: { size: number; puzzle: number[][] }) {
     ></GuideGroup>
   ));
 
+  const toast = useToast();
+
   const onStatusChange = (
     rowIndex: number,
     columnIndex: number,
     nextStatus: PixelStatus
   ) => {
-    setStatuses(updateStatuses(rowIndex, columnIndex, nextStatus, statuses));
-    // TODO: 正解かどうか判定するロジックを追加→正解していたらtoastを表示
+    const updatedStatuses = updateStatuses(
+      rowIndex,
+      columnIndex,
+      nextStatus,
+      statuses
+    );
+    setStatuses(updatedStatuses);
+    if (isCorrect(updatedStatuses, props.puzzle)) {
+      toast({
+        title: "Clear!!!",
+        description: "Congratulations!!!!",
+        status: "success",
+        duration: 9000,
+        isClosable: true,
+      });
+    }
   };
 
   return (
