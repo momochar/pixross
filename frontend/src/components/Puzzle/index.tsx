@@ -48,6 +48,10 @@ export function updateStatuses(
   return nextStatuses;
 }
 
+export function isCorrect(statuses: PixelStatus[][], puzzle: number[][]) {
+  
+} 
+
 function Puzzle(props: { size: number; puzzle: number[][] }) {
   const [statuses, setStatuses] = useState(
     props.puzzle.map((rows) => rows.map((_) => "blank")) as PixelStatus[][]
@@ -77,6 +81,7 @@ function Puzzle(props: { size: number; puzzle: number[][] }) {
     nextStatus: PixelStatus
   ) => {
     setStatuses(updateStatuses(rowIndex, columnIndex, nextStatus, statuses));
+    // TODO: 正解かどうか判定するロジックを追加→正解していたらtoastを表示
   };
 
   return (
