@@ -2,7 +2,7 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import Board from "./";
 
 test("renders Board", () => {
-  render(<Board size={1} statuses={[["blank"]]} onStatusChange={() => void} />);
+  render(<Board size={1} statuses={[["blank"]]} onStatusChange={() => {}} />);
 });
 
 describe("pixelがクリックされたとき", () => {
