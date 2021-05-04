@@ -76,7 +76,7 @@ function Puzzle(props: { size: number; puzzle: number[][] }) {
     columnIndex: number,
     nextStatus: PixelStatus
   ) => {
-    console.log(rowIndex, columnIndex, nextStatus);
+    setStatuses(updateStatuses(rowIndex, columnIndex, nextStatus, statuses));
   };
 
   return (
