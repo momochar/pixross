@@ -7,19 +7,19 @@ import { PuzzleId } from "./types";
 function App() {
   const [choicedPuzzleId, setChoisedPuzzuleId] = useState(0 as PuzzleId);
 
-  const puzzle1 = [
+  const puzzle0 = [
     [1, 0, 1],
     [0, 1, 0],
     [1, 0, 1],
   ];
-  const puzzle2 = [
+  const puzzle1 = [
     [1, 0, 1, 0, 0],
     [0, 1, 0, 0, 0],
     [1, 0, 1, 0, 0],
     [1, 0, 1, 0, 0],
     [1, 0, 1, 0, 0],
   ];
-  const puzzle3 = [
+  const puzzle2 = [
     [1, 0, 1, 1, 0, 0, 1, 0, 1, 0],
     [0, 1, 0, 1, 0, 0, 1, 0, 1, 0],
     [1, 0, 1, 0, 0, 0, 1, 0, 1, 0],
@@ -34,9 +34,9 @@ function App() {
 
   // FIXME: キーの型を PuzzleId にしたい
   const puzzles: { [key: number]: number[][] } = {
-    0: puzzle1,
-    1: puzzle2,
-    2: puzzle3,
+    0: puzzle0,
+    1: puzzle1,
+    2: puzzle2,
   };
   const choicedPuzzle = puzzles[choicedPuzzleId];
 
