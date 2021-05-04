@@ -1,7 +1,6 @@
 import "./App.css";
 import Puzzle from "./components/Puzzle";
 
-
 function App() {
   const puzzleSize = 3;
   const puzzle = [
