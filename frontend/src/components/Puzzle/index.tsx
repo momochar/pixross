@@ -58,13 +58,25 @@ function Puzzle(props: { size: number; puzzle: number[][] }) {
     ></GuideGroup>
   ));
 
+  const onStatusChange = (
+    rowIndex: number,
+    columnIndex: number,
+    nextStatus: PixelStatus
+  ) => {
+    console.log(rowIndex, columnIndex, nextStatus);
+  };
+
   return (
     <div>
       <SimpleGrid columns={2}>
         <SimpleGrid columns={1}></SimpleGrid>
         <SimpleGrid columns={props.size}>{verticalGuideGroup}</SimpleGrid>
         <SimpleGrid columns={1}>{horizontalGuideGroup}</SimpleGrid>
-        <Board size={props.size} statuses={statuses}></Board>
+        <Board
+          size={props.size}
+          statuses={statuses}
+          onStatusChange={onStatusChange}
+        ></Board>
       </SimpleGrid>
     </div>
   );
