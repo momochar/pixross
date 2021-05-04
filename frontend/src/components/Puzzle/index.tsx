@@ -41,8 +41,10 @@ export function updateStatuses(
   nextStatus: PixelStatus,
   currentStatuses: PixelStatus[][]
 ) {
-  let nextStatuses: PixelStatus[][] = [[]];
-  // TODO: 更新処理をかく
+  const nextStatuses = currentStatuses.map((row) =>
+    row.map((status) => status)
+  );
+  nextStatuses[rowIndex][columnIndex] = nextStatus;
   return nextStatuses;
 }
 
