@@ -35,6 +35,17 @@ function extractGuideData(puzzle: number[][]) {
   });
 }
 
+export function updateStatuses(
+  rowIndex: number,
+  columnIndex: number,
+  nextStatus: PixelStatus,
+  currentStatuses: PixelStatus[][]
+) {
+  let nextStatuses: PixelStatus[][] = [[]];
+  // TODO: 更新処理をかく
+  return nextStatuses;
+}
+
 function Puzzle(props: { size: number; puzzle: number[][] }) {
   const [statuses, setStatuses] = useState(
     props.puzzle.map((rows) => rows.map((_) => "blank")) as PixelStatus[][]
