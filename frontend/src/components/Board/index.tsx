@@ -2,16 +2,21 @@ import Pixel from "../Pixel";
 import { SimpleGrid } from "@chakra-ui/react";
 import { PixelStatus } from "../../types";
 
-function Board(props: { size: number; statuses: PixelStatus[][] }) {
+function Board(props: {
+  size: number;
+  statuses: PixelStatus[][];
+  onStatusChange: (
+    rowIndex: number,
+    columnIndex: number,
+    nextStatus: PixelStatus
+  ) => void;
+}) {
   const onStatusChange = (
     rowIndex: number,
     columnIndex: number,
     nextStatus: PixelStatus
   ) => {
-    // TODO: 親であるPuzzleから更新関数を受け取って、それを呼び出す
-    console.log(rowIndex);
-    console.log(columnIndex);
-    console.log(nextStatus);
+    props.onStatusChange(rowIndex, columnIndex, nextStatus);
   };
 
   const listItems = props.statuses
