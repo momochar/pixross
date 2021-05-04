@@ -9,8 +9,8 @@ export function createGuide(puzzle: number[][]) {
   const columns = extractGuideData(transposedPuzzle);
 
   return {
-    column: columns,
-    row: rows,
+    columns: columns,
+    rows: rows,
   };
 }
 
