@@ -3,8 +3,14 @@ import { useState } from "react";
 import { PixelStatus } from "../../types";
 
 function Pixel(props: {
+  rowIndex: number;
+  columnIndex: number;
   status: PixelStatus;
-  onStatusChange: (nextStatus: PixelStatus) => void;
+  onStatusChange: (
+    rowIndex: number,
+    columnIndex: number,
+    nextStatus: PixelStatus
+  ) => void;
 }) {
   const handleOnClick = () => {
     let nextStatus: PixelStatus;
@@ -13,7 +19,7 @@ function Pixel(props: {
     } else {
       nextStatus = "blank";
     }
-    props.onStatusChange(nextStatus);
+    props.onStatusChange(props.rowIndex, props.columnIndex, nextStatus);
   };
 
   const background = props.status === "blank" ? "white" : "lightblue";
