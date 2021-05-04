@@ -4,7 +4,6 @@ import Puzzle from "./components/Puzzle";
 import PuzzleChoice from "./components/PuzzleChoice";
 import { PuzzleId } from "./types";
 
-
 function App() {
   const [choicedPuzzleId, setChoisedPuzzuleId] = useState(0 as PuzzleId);
 
@@ -40,11 +39,16 @@ function App() {
     2: puzzle3,
   };
   const choicedPuzzle = puzzles[choicedPuzzleId];
+
+  const onChangeChoice = (puzzleId: PuzzleId) => {
+    setChoisedPuzzuleId(puzzleId);
+  };
+
   return (
     <div className="App">
       <PuzzleChoice
         choicedPuzzleId={choicedPuzzleId}
-        onChangeChoice={() => {}}
+        onChangeChoice={onChangeChoice}
       ></PuzzleChoice>
       <Puzzle size={choicedPuzzle.length} puzzle={choicedPuzzle}></Puzzle>
     </div>
