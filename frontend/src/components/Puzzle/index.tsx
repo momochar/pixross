@@ -34,7 +34,6 @@ function extractGuideData(puzzle: number[][]) {
 }
 
 function Puzzle(props: { size: number; puzzle: number[][] }) {
-  const tmp = [1, 2, 1, 9];
   const { columns, rows } = createGuide(props.puzzle);
   const verticalGuideGroup = columns.map((column, index) => (
     <GuideGroup
