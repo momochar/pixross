@@ -20,21 +20,21 @@ describe("#createGuide", () => {
     const result = createGuide(puzzle);
     const expected = {
       columns: [[1, 1], [1], [1, 1]],
-      rows: [[1, 1], [1], [1, 1]]
-    }
+      rows: [[1, 1], [1], [1, 1]],
+    };
     expect(result).toStrictEqual(expected);
   });
-    test("パターン2 塗っているマスがつながっている場合", () => {
-      const puzzle = [
-        [1, 1, 1],
-        [0, 1, 0],
-        [1, 1, 1],
-      ];
-      const result = createGuide(puzzle);
-      const expected = {
-        columns: [[1, 1], [3], [1, 1]],
-        rows: [[3], [1], [3]],
-      };
-      expect(result).toStrictEqual(expected);
-    });
-})
+  test("パターン2 塗っているマスがつながっている場合", () => {
+    const puzzle = [
+      [1, 1, 1],
+      [0, 1, 0],
+      [1, 1, 1],
+    ];
+    const result = createGuide(puzzle);
+    const expected = {
+      columns: [[1, 1], [3], [1, 1]],
+      rows: [[3], [1], [3]],
+    };
+    expect(result).toStrictEqual(expected);
+  });
+});
