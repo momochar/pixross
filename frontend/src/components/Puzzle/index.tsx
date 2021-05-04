@@ -35,19 +35,20 @@ function extractGuideData(puzzle: number[][]) {
 
 function Puzzle(props: { size: number; puzzle: number[][] }) {
   const tmp = [1, 2, 1, 9];
-  const verticalGuideGroup = [...Array(props.size)].map((_, i) => (
+  const { columns, rows } = createGuide(props.puzzle);
+  const verticalGuideGroup = columns.map((column, index) => (
     <GuideGroup
-      guides={tmp}
-      key={`v_${i}`}
-      index={i}
+      guides={column}
+      key={`v_${index}`}
+      index={index}
       direction="column"
     ></GuideGroup>
   ));
-  const horizontalGuideGroup = [...Array(props.size)].map((_, i) => (
+  const horizontalGuideGroup = rows.map((row, index) => (
     <GuideGroup
-      guides={tmp}
-      key={`h_${i}`}
-      index={i}
+      guides={row}
+      key={`h_${index}`}
+      index={index}
       direction="row"
     ></GuideGroup>
   ));
