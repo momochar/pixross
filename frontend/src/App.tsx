@@ -3,10 +3,15 @@ import Puzzle from "./components/Puzzle";
 
 
 function App() {
-  const puzzleSize = 5;
+  const puzzleSize = 3;
+  const puzzle = [
+    [1, 0, 1],
+    [0, 1, 0],
+    [1, 0, 1],
+  ];
   return (
     <div className="App">
-      <Puzzle size={puzzleSize}></Puzzle>
+      <Puzzle size={puzzleSize} puzzle={puzzle}></Puzzle>
     </div>
   );
 }

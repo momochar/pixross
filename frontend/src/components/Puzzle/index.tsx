@@ -2,13 +2,55 @@ import Board from "../Board";
 import GuideGroup from "../GuideGroup";
 import { SimpleGrid } from "@chakra-ui/react";
 
-function Puzzle(props: { size: number }) {
+export function createGuide(puzzle: number[][]) {
+  const rows = extractGuideData(puzzle);
+
+  const transposedPuzzle = puzzle[0].map((_, c) => puzzle.map((r) => r[c]));
+  const columns = extractGuideData(transposedPuzzle);
+
+  return {
+    columns: columns,
+    rows: rows,
+  };
+}
+
+function extractGuideData(puzzle: number[][]) {
+  return puzzle.map((line: number[]) => {
+    return line
+      .reduce((previous: number[], current: number) => {
+        if (current === 0) {
+          previous.push(0);
+        } else {
+          if (previous.length > 0) {
+            previous[previous.length - 1] = previous[previous.length - 1] + 1;
+          } else {
+            previous.push(1);
+          }
+        }
+        return previous;
+      }, [])
+      .filter((n: number) => n > 0);
+  });
+}
+
+function Puzzle(props: { size: number; puzzle: number[][] }) {
   const tmp = [1, 2, 1, 9];
-  const verticalGuideGroup = [...Array(props.size)].map((_, i) => (
-    <GuideGroup guides={tmp} key={`v_${i}`} index={i} direction="column"></GuideGroup>
+  const { columns, rows } = createGuide(props.puzzle);
+  const verticalGuideGroup = columns.map((column, index) => (
+    <GuideGroup
+      guides={column}
+      key={`v_${index}`}
+      index={index}
+      direction="column"
+    ></GuideGroup>
   ));
-  const horizontalGuideGroup = [...Array(props.size)].map((_, i) => (
-    <GuideGroup guides={tmp} key={`h_${i}`} index={i} direction="row"></GuideGroup>
+  const horizontalGuideGroup = rows.map((row, index) => (
+    <GuideGroup
+      guides={row}
+      key={`h_${index}`}
+      index={index}
+      direction="row"
+    ></GuideGroup>
   ));
 
   return (
