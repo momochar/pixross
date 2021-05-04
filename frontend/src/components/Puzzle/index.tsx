@@ -37,7 +37,11 @@ function extractGuideData(puzzle: number[][]) {
 function Puzzle(props: { size: number; puzzle: number[][] }) {
   // FIXME: statuses の型が string[][] になってしまっている
   const [statuses, setStatuses] = useState(
-    props.puzzle.map((rows) => rows.map((_) => "blank"))
+    props.puzzle.map((rows) => rows.map((_) => "blank")) as (
+      | "blank"
+      | "painted"
+      | "blocked"
+    )[][]
   );
 
   const { columns, rows } = createGuide(props.puzzle);
