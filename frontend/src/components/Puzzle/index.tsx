@@ -49,8 +49,13 @@ export function updateStatuses(
 }
 
 export function isCorrect(statuses: PixelStatus[][], puzzle: number[][]) {
-  
-} 
+  const convertedStatuses = statuses.map((row) =>
+    row.map((status) => (status === "painted" ? 1 : 0))
+  );
+  const jsonOfStatuses = JSON.stringify(convertedStatuses);
+  const jsonOfPuzzle = JSON.stringify(puzzle);
+  return jsonOfStatuses === jsonOfPuzzle;
+}
 
 function Puzzle(props: { size: number; puzzle: number[][] }) {
   const [statuses, setStatuses] = useState(
