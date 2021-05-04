@@ -1,10 +1,9 @@
 import { Box } from "@chakra-ui/react";
 import { useState } from "react";
-
-// type PixelStatus = "blank" | "painted" | "blocked";
+import { PixelStatus } from "../../types";
 
 function Pixel() {
-  const [status, setStatus] = useState("blank");
+  const [status, setStatus] = useState("blank" as PixelStatus);
 
   const handleOnClick = () => {
     if (status === "blank") {

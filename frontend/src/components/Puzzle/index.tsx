@@ -2,6 +2,7 @@ import Board from "../Board";
 import GuideGroup from "../GuideGroup";
 import { SimpleGrid } from "@chakra-ui/react";
 import { useState } from "react";
+import { PixelStatus } from "../../types";
 
 export function createGuide(puzzle: number[][]) {
   const rows = extractGuideData(puzzle);
@@ -35,13 +36,8 @@ function extractGuideData(puzzle: number[][]) {
 }
 
 function Puzzle(props: { size: number; puzzle: number[][] }) {
-  // FIXME: statuses の型が string[][] になってしまっている
   const [statuses, setStatuses] = useState(
-    props.puzzle.map((rows) => rows.map((_) => "blank")) as (
-      | "blank"
-      | "painted"
-      | "blocked"
-    )[][]
+    props.puzzle.map((rows) => rows.map((_) => "blank")) as PixelStatus[][]
   );
 
   const { columns, rows } = createGuide(props.puzzle);
