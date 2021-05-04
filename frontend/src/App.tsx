@@ -2,8 +2,8 @@ import { useState } from "react";
 import "./App.css";
 import Puzzle from "./components/Puzzle";
 import PuzzleChoice from "./components/PuzzleChoice";
+import { PuzzleId } from "./types";
 
-type PuzzleId = number;
 
 function App() {
   const [choicedPuzzleId, setChoisedPuzzuleId] = useState(0 as PuzzleId);
