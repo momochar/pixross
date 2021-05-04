@@ -42,7 +42,10 @@ function App() {
   const choicedPuzzle = puzzles[choicedPuzzleId];
   return (
     <div className="App">
-      <PuzzleChoice></PuzzleChoice>
+      <PuzzleChoice
+        choicedPuzzleId={choicedPuzzleId}
+        onChangeChoice={() => {}}
+      ></PuzzleChoice>
       <Puzzle size={choicedPuzzle.length} puzzle={choicedPuzzle}></Puzzle>
     </div>
   );
