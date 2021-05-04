@@ -8,13 +8,6 @@ type PuzzleId = number;
 function App() {
   const [choicedPuzzleId, setChoisedPuzzuleId] = useState(0 as PuzzleId);
 
-  const puzzleSize = 3;
-  const puzzle = [
-    [1, 0, 1],
-    [0, 1, 0],
-    [1, 0, 1],
-  ];
-
   const puzzle1 = [
     [1, 0, 1],
     [0, 1, 0],
