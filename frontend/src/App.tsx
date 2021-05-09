@@ -52,7 +52,7 @@ function App() {
         choicedPuzzleId={choicedPuzzleId}
         onChangeChoice={onChangeChoice}
       ></PuzzleChoice>
-      <Puzzle size={choicedPuzzle.length} puzzle={choicedPuzzle}></Puzzle>
+      <Puzzle puzzle={choicedPuzzle}></Puzzle>
     </div>
   );
 }

@@ -3,8 +3,6 @@ import { SimpleGrid } from "@chakra-ui/react";
 import { PixelStatus } from "../../types";
 
 function Board(props: {
-  // TODO: 削除する
-  size?: number;
   statuses: PixelStatus[][];
   onStatusChange: (
     rowIndex: number,

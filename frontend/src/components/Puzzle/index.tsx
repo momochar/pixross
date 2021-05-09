@@ -58,8 +58,6 @@ export function isCorrect(statuses: PixelStatus[][], puzzle: number[][]) {
 }
 
 function Puzzle(props: {
-  // TODO: 削除する
-  size?: number;
   puzzle: number[][];
 }) {
   const [statuses, setStatuses] = useState([] as PixelStatus[][]);

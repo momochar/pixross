@@ -7,7 +7,7 @@ test("renders Puzzle", () => {
     [0, 1, 0],
     [1, 0, 1],
   ];
-  render(<Puzzle puzzle={puzzle} size={10} />);
+  render(<Puzzle puzzle={puzzle} />);
 });
 
 describe("#createGuide", () => {
