@@ -2,7 +2,7 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import Board from "./";
 
 test("renders Board", () => {
-  render(<Board size={1} statuses={[["blank"]]} onStatusChange={() => {}} />);
+  render(<Board statuses={[["blank"]]} onStatusChange={() => {}} />);
 });
 
 describe("pixelがクリックされたとき", () => {
@@ -10,7 +10,6 @@ describe("pixelがクリックされたとき", () => {
     const myMock = jest.fn();
     render(
       <Board
-        size={2}
         statuses={[
           ["blank", "blank"],
           ["blank", "blank"],

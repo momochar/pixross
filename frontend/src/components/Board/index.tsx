@@ -3,7 +3,6 @@ import { SimpleGrid } from "@chakra-ui/react";
 import { PixelStatus } from "../../types";
 
 function Board(props: {
-  size: number;
   statuses: PixelStatus[][];
   onStatusChange: (
     rowIndex: number,
@@ -33,7 +32,11 @@ function Board(props: {
     )
     .flat();
 
-  return <SimpleGrid columns={props.size}>{listItems}</SimpleGrid>;
+  return (
+    <SimpleGrid columns={props.statuses[0]?.length ?? 0}>
+      {listItems}
+    </SimpleGrid>
+  );
 }
 
 export default Board;

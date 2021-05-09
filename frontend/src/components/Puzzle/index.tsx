@@ -57,7 +57,9 @@ export function isCorrect(statuses: PixelStatus[][], puzzle: number[][]) {
   return jsonOfStatuses === jsonOfPuzzle;
 }
 
-function Puzzle(props: { size: number; puzzle: number[][] }) {
+function Puzzle(props: {
+  puzzle: number[][];
+}) {
   const [statuses, setStatuses] = useState([] as PixelStatus[][]);
 
   useEffect(() => {
@@ -111,13 +113,11 @@ function Puzzle(props: { size: number; puzzle: number[][] }) {
     <div>
       <SimpleGrid columns={2}>
         <SimpleGrid columns={1}></SimpleGrid>
-        <SimpleGrid columns={props.size}>{verticalGuideGroup}</SimpleGrid>
+        <SimpleGrid columns={props.puzzle[0].length}>
+          {verticalGuideGroup}
+        </SimpleGrid>
         <SimpleGrid columns={1}>{horizontalGuideGroup}</SimpleGrid>
-        <Board
-          size={props.size}
-          statuses={statuses}
-          onStatusChange={onStatusChange}
-        ></Board>
+        <Board statuses={statuses} onStatusChange={onStatusChange}></Board>
       </SimpleGrid>
     </div>
   );
