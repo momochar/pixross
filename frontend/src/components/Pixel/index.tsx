@@ -1,4 +1,5 @@
 import { Box } from "@chakra-ui/react";
+import { CloseIcon } from "@chakra-ui/icons";
 import { PixelStatus } from "../../types";
 
 function Pixel(props: {
@@ -30,7 +31,7 @@ function Pixel(props: {
       case "painted":
         return "lightblue";
       case "blocked":
-        return "lightgray";
+        return "white";
     }
   };
 
