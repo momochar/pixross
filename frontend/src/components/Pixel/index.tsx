@@ -1,5 +1,4 @@
 import { Box } from "@chakra-ui/react";
-import { useState } from "react";
 import { PixelStatus } from "../../types";
 
 function Pixel(props: {
