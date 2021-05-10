@@ -34,15 +34,22 @@ function Pixel(props: {
     }
   };
 
+  const inner = (status: PixelStatus) => {
+    return status === "blocked" ? <CloseIcon color="red.500" /> : null;
+  };
+
   return (
     <Box
       data-testid="pixel-element"
       outline="solid 1px"
       bg={background(props.status)}
       w="100%"
+      h="32px"
       p={0}
       onClick={handleOnClick}
-    ></Box>
+    >
+      {inner(props.status)}
+    </Box>
   );
 }
 
