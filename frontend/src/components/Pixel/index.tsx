@@ -16,19 +16,30 @@ function Pixel(props: {
     let nextStatus: PixelStatus;
     if (props.status === "blank") {
       nextStatus = "painted";
+    } else if (props.status === "painted") {
+      nextStatus = "blocked";
     } else {
       nextStatus = "blank";
     }
     props.onStatusChange(props.rowIndex, props.columnIndex, nextStatus);
   };
 
-  const background = props.status === "blank" ? "white" : "lightblue";
+  const background = (status: PixelStatus) => {
+    switch (status) {
+      case "blank":
+        return "white";
+      case "painted":
+        return "lightblue";
+      case "blocked":
+        return "lightgray";
+    }
+  };
 
   return (
     <Box
       data-testid="pixel-element"
       outline="solid 1px"
-      bg={background}
+      bg={background(props.status)}
       w="100%"
       p={0}
       onClick={handleOnClick}

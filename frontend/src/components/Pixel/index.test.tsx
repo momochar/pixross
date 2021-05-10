@@ -83,13 +83,59 @@ describe("背景色について", () => {
       });
     });
     describe("paintedのpixelがクリックされたとき", () => {
-      test("呼び出された関数の引数が blank", () => {
+      test("呼び出された関数の引数が blocked", () => {
         const myMock = jest.fn();
         render(
           <Pixel
             rowIndex={0}
             columnIndex={0}
             status="painted"
+            onStatusChange={myMock}
+          />
+        );
+        fireEvent(
+          screen.getByTestId("pixel-element"),
+          new MouseEvent("click", {
+            bubbles: true,
+            cancelable: true,
+          })
+        );
+        expect(myMock.mock.calls[0][0]).toBe(0);
+        expect(myMock.mock.calls[0][1]).toBe(0);
+        expect(myMock.mock.calls[0][2]).toBe("blocked");
+      });
+    });
+    describe("paintedのpixelがクリックされたとき", () => {
+      test("呼び出された関数の引数が blocked", () => {
+        const myMock = jest.fn();
+        render(
+          <Pixel
+            rowIndex={0}
+            columnIndex={0}
+            status="painted"
+            onStatusChange={myMock}
+          />
+        );
+        fireEvent(
+          screen.getByTestId("pixel-element"),
+          new MouseEvent("click", {
+            bubbles: true,
+            cancelable: true,
+          })
+        );
+        expect(myMock.mock.calls[0][0]).toBe(0);
+        expect(myMock.mock.calls[0][1]).toBe(0);
+        expect(myMock.mock.calls[0][2]).toBe("blocked");
+      });
+    });
+    describe("blockedのpixelがクリックされたとき", () => {
+      test("呼び出された関数の引数が blank", () => {
+        const myMock = jest.fn();
+        render(
+          <Pixel
+            rowIndex={0}
+            columnIndex={0}
+            status="blocked"
             onStatusChange={myMock}
           />
         );
