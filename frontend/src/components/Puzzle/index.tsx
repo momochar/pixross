@@ -111,7 +111,7 @@ function Puzzle(props: { puzzle: number[][] }) {
     <Container maxW="container.xl">
       <SimpleGrid columns={2}>
         <SimpleGrid columns={1}></SimpleGrid>
-        <SimpleGrid columns={props.puzzle[0].length}>
+        <SimpleGrid templateColumns={`repeat(${props.puzzle[0].length}, 32px)`}>
           {verticalGuideGroup}
         </SimpleGrid>
         <SimpleGrid columns={1}>{horizontalGuideGroup}</SimpleGrid>

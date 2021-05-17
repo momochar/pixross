@@ -33,7 +33,9 @@ function Board(props: {
     .flat();
 
   return (
-    <SimpleGrid columns={props.statuses[0]?.length ?? 0}>
+    <SimpleGrid
+      templateColumns={`repeat(${props.statuses[0]?.length ?? 0}, 32px)`}
+    >
       {listItems}
     </SimpleGrid>
   );
