@@ -57,6 +57,10 @@ export function isCorrect(statuses: PixelStatus[][], puzzle: number[][]) {
   return jsonOfStatuses === jsonOfPuzzle;
 }
 
+export function apple(GuideGroup: number[], statusSequence: PixelStatus[]) {
+  return [{ guideNumber: 1, isAnswered: false }];
+}
+
 function Puzzle(props: {
   puzzle: number[][];
 }) {

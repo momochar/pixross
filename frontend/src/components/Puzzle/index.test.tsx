@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import Puzzle, { createGuide, updateStatuses, isCorrect } from "./";
+import Puzzle, { createGuide, updateStatuses, isCorrect, apple } from "./";
 
 test("renders Puzzle", () => {
   const puzzle = [
@@ -101,5 +101,20 @@ describe("#isCorrect", () => {
       );
       expect(actual).toBe(false);
     });
+  });
+});
+
+describe("#apple", () => {
+  test("塗っているガイドが一つある", () => {
+    const actual = apple([1], ["painted", "blank", "blocked"]);
+    expect(actual).toStrictEqual([{ guideNumber: 1, isAnswered: true }]);
+  });
+  test("塗っているガイドがない", () => {
+    const actual = apple([1], ["blank", "blank", "blocked"]);
+    expect(actual).toStrictEqual([{ guideNumber: 1, isAnswered: false }]);
+  });
+  test("ガイドと塗っているマスの数が一致しない", () => {
+    const actual = apple([1], ["painted", "painted", "blocked"]);
+    expect(actual).toStrictEqual([{ guideNumber: 1, isAnswered: false }]);
   });
 });
