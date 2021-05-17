@@ -1,8 +1,11 @@
+import React from "react";
 import Board from "../Board";
 import GuideGroup from "../GuideGroup";
 import { SimpleGrid, useToast, Container } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import { PixelStatus } from "../../types";
+
+export const PixelSizeContext = React.createContext(8);
 
 export function createGuide(puzzle: number[][]) {
   const rows = extractGuideData(puzzle);
@@ -108,16 +111,20 @@ function Puzzle(props: { puzzle: number[][] }) {
   };
 
   return (
-    <Container maxW="container.xl">
-      <SimpleGrid columns={2}>
-        <SimpleGrid columns={1}></SimpleGrid>
-        <SimpleGrid templateColumns={`repeat(${props.puzzle[0].length}, 32px)`}>
-          {verticalGuideGroup}
+    <PixelSizeContext.Provider value={8}>
+      <Container maxW="container.xl">
+        <SimpleGrid columns={2}>
+          <SimpleGrid columns={1}></SimpleGrid>
+          <SimpleGrid
+            templateColumns={`repeat(${props.puzzle[0].length}, 32px)`}
+          >
+            {verticalGuideGroup}
+          </SimpleGrid>
+          <SimpleGrid columns={1}>{horizontalGuideGroup}</SimpleGrid>
+          <Board statuses={statuses} onStatusChange={onStatusChange}></Board>
         </SimpleGrid>
-        <SimpleGrid columns={1}>{horizontalGuideGroup}</SimpleGrid>
-        <Board statuses={statuses} onStatusChange={onStatusChange}></Board>
-      </SimpleGrid>
-    </Container>
+      </Container>
+    </PixelSizeContext.Provider>
   );
 }
 

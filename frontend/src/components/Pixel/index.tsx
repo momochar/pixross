@@ -1,6 +1,8 @@
 import { Box } from "@chakra-ui/react";
 import { CloseIcon } from "@chakra-ui/icons";
 import { PixelStatus } from "../../types";
+import React, { useContext } from "react";
+import { PixelSizeContext } from "../Puzzle";
 
 function Pixel(props: {
   rowIndex: number;
@@ -39,13 +41,15 @@ function Pixel(props: {
     return status === "blocked" ? <CloseIcon color="red.500" /> : null;
   };
 
+  const pixelSize = React.useContext(PixelSizeContext);
+
   return (
     <Box
       data-testid="pixel-element"
       outline="solid 1px"
       bg={background(props.status)}
-      w="100%"
-      h="32px"
+      w={useContext(PixelSizeContext)}
+      h={useContext(PixelSizeContext)}
       p={0}
       onClick={handleOnClick}
     >
