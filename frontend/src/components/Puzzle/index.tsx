@@ -1,6 +1,6 @@
 import Board from "../Board";
 import GuideGroup from "../GuideGroup";
-import { SimpleGrid, useToast } from "@chakra-ui/react";
+import { SimpleGrid, useToast, Container } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import { PixelStatus } from "../../types";
 
@@ -57,9 +57,7 @@ export function isCorrect(statuses: PixelStatus[][], puzzle: number[][]) {
   return jsonOfStatuses === jsonOfPuzzle;
 }
 
-function Puzzle(props: {
-  puzzle: number[][];
-}) {
+function Puzzle(props: { puzzle: number[][] }) {
   const [statuses, setStatuses] = useState([] as PixelStatus[][]);
 
   useEffect(() => {
@@ -110,7 +108,7 @@ function Puzzle(props: {
   };
 
   return (
-    <div>
+    <Container maxW="container.xl">
       <SimpleGrid columns={2}>
         <SimpleGrid columns={1}></SimpleGrid>
         <SimpleGrid columns={props.puzzle[0].length}>
@@ -119,7 +117,7 @@ function Puzzle(props: {
         <SimpleGrid columns={1}>{horizontalGuideGroup}</SimpleGrid>
         <Board statuses={statuses} onStatusChange={onStatusChange}></Board>
       </SimpleGrid>
-    </div>
+    </Container>
   );
 }
 
